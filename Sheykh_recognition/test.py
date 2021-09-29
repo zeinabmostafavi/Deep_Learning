@@ -10,7 +10,7 @@ model = load_model("model.h5")
 width = height = 230
 
 
-bot = telebot.TeleBot("2009255429:AAH5D2rgfflN4DKtYF5uf9mRVl1pgOM8goc")
+bot = telebot.TeleBot("-----YOUR TOKEN-----")
 
 
 @bot.message_handler(commands=['start'])
