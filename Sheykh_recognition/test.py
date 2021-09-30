@@ -5,9 +5,8 @@ import tensorflow
 from keras.models import load_model
 import os
 
-os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'
 model = load_model("model.h5")
-width = height = 230
+width = height = 224
 
 
 bot = telebot.TeleBot("2009255429:AAH5D2rgfflN4DKtYF5uf9mRVl1pgOM8goc")
@@ -38,9 +37,11 @@ def photo(message):
     image = image/255
     image = image.reshape(1, width, height, 3)
     pred = model.predict(image)
-    if np.argmax(pred) == 1:
+    print('____________________________', pred)
+    res = np.argmax(pred)
+    if res == 1:
         bot.reply_to(message, 'شیخ')
-    elif np.argmax(pred) == 0:
+    elif res == 0:
         bot.reply_to(message, ' نرمال')
 
 
